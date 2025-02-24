@@ -8,7 +8,7 @@ import {
 
 export enum TaskStatus {
   OPEN = 'OPEN',
-  INPROGRESS = 'INPROGRESS',
+  INPROGRESS = 'IN PROGRESS',
   DONE = 'DONE',
 }
 
@@ -25,8 +25,8 @@ export class Task {
 
   @Column({
     type: 'enum',
-    enum: TaskStatus, // ✅ Restricts values to the TaskStatus enum
-    default: TaskStatus.OPEN, // ✅ Default value set to OPEN
+    enum: TaskStatus,
+    default: TaskStatus.OPEN,
   })
   status: string;
 

@@ -11,13 +11,20 @@ export class TasksService {
     @InjectRepository(Task) private readonly taskRepo: Repository<Task>,
   ) {}
 
-  async getAllTasks(): Promise<Task[]> {
-    return this.taskRepo.find({
+  async getTasks(
+    page: number,
+    limit: number,
+  ): Promise<{ tasks: Task[]; total: number }> {
+    const [tasks, total] = await this.taskRepo.findAndCount({
+      skip: (page - 1) * limit,
+      take: limit,
       order: {
-        createdAt: 'ASC',
-        id: 'ASC',
+        createdAt: 'DESC',
+        id: 'DESC',
       },
     });
+
+    return { tasks, total };
   }
 
   async addTask(createTaskDto: CreateTaskDto): Promise<Task> {
