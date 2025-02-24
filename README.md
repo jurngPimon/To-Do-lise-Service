@@ -4,8 +4,6 @@
 - **NestJS** - Backend Framework
 - **TypeORM** - Database ORM
 - **PostgreSQL** - Database
-- **Firebase Authentication** - User Authentication
-- **Passport-JWT** - Backend authentication with JWT
 
 ## 🏗 Installation & Setup
 ### 1️⃣ Clone the Repository
@@ -28,7 +26,14 @@ cp .env.example .env
 ### 4️⃣ Run the Application
 ```bash
 npm run start
-```     
+```    
+
+### 5️⃣ Access the API
+```bash
+http://localhost:4000/tasks
+```
+
+
 
 
 
