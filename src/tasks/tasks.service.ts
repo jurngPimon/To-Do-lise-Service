@@ -27,6 +27,14 @@ export class TasksService {
     return { tasks, total };
   }
 
+  async getTaskById(id: number): Promise<Task> {
+    const task = await this.taskRepo.findOne({ where: { id } });
+    if (!task) {
+      throw new NotFoundException(`Task with ID ${id} not found`);
+    }
+    return task;
+  }
+
   async addTask(createTaskDto: CreateTaskDto): Promise<Task> {
     const newTask = this.taskRepo.create(createTaskDto);
     return this.taskRepo.save(newTask);
